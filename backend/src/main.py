@@ -29,5 +29,6 @@ app.add_middleware(
 app.include_router(router)
 
 @app.get("/", tags=["Health"])
+@app.head("/", tags=["Health"])
 def read_root():
     return {"message": "Welcome to the Weather Prediction API. Go to /docs for the API documentation."}

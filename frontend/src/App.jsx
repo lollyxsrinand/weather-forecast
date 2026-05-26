@@ -4,6 +4,7 @@ import { ChevronDown, CloudRain, Sun, Cloud, Snowflake, Loader2, CloudLightning 
 import './index.css';
 
 // Remove the default App.css import if it exists
+const api_url = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000' : 'https://weather-forecast-f1nf.onrender.com';
 
 const LOCATIONS = [
   { id: 'blr', name: 'Bengaluru' },
@@ -56,7 +57,7 @@ function App() {
     setError(null);
     try {
       // Need to use the backend URL, assuming it runs on localhost:8000
-      const response = await axios.get(`http://127.0.0.1:8000/forecast/${location}`);
+      const response = await axios.get(`${api_url}/forecast/${location}`);
       setForecast(response.data.forecast);
     } catch (err) {
       console.error(err);
